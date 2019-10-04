@@ -23,14 +23,6 @@ type Client struct {
 	ums  *gm.UsersMessagesService
 }
 
-// Refer to https://stackoverflow.com/questions/37534548/how-to-access-a-gmail-account-i-own-using-gmail-api
-// We need to create OAuth client in google api console
-// (https://console.developers.google.com/apis). Then use
-// the client id and secret to generate refresh token in
-// auth playground (https://developers.google.com/oauthplayground)
-// Download the corresonding credentials json file as well.
-// Note: when creating OAuth client, set type as web application,
-// and use "https://developers.google.com/oauthplayground" as redirect URI.
 func New(ctx context.Context, user, credentialPath, refreshToken string) (*Client, error) {
 	b, err := ioutil.ReadFile(credentialPath)
 	if err != nil {
